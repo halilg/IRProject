@@ -299,44 +299,6 @@ void loop()
 
 Codes:
 -------------------------------------------
-Transmitter: RC5
-On off: C 80C
-1:1 801
-2:2 802
-3:3 803
-4:4 804
-5:
-6:
-7:
-8:
-9:
-0:
-Mute:D 80D
-16:9: AD8C62D2 F280BC5B
-ReD: 4B995E59 1C102884
-Green: E050BDE6 EF4EDF53
-Yellow: DF50BC53 F04EE0E6
-Blue: 8533B77
-P+: 820 20
-P-:  821 21
-V+: 810 10
-V-: 811 11
-AV: 38 838
-TV: 83F 3F
-SMD: 823 23
-RLR: 822 22
-MENU: BFB8F2FE D9F9700B
-TTX0: 83C 3C
-TTX1: 82E 2E
-TTX2: 82A 2A
-TTX3: C460AC26
-TTX4: 829 29
-TTX5: 82B 2B
-TTX6: 82D 2D
-TTX7: 82C
-PP: 80E
-i: 80F
--------------------------------------------
 Samsung TV: None : 32 bit
 on: E0E040BF
 Decoded SAMSUNG: 40BF (32 bits)
