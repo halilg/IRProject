@@ -2,6 +2,9 @@
 
 // Input Remote Codes
 
+#define IPROTOCOL RC5
+#define IBITS 12 // !!
+
 #define IRC5POWER0 0xC
 #define IRC5POWER1 0X80C
 
@@ -38,17 +41,17 @@
 #define IRC5MUTE0 0xD
 #define IRC5MUTE1 0x80D
 
-#define IRC5P+0 0x20
-#define IRC5P+1 0x820
+#define IRC5CHU0 0x20
+#define IRC5CHU1 0x820
 
-#define IRC5P-0  0x21
-#define IRC5P-1  0x821
+#define IRC5CHD0  0x21
+#define IRC5CHD1  0x821
 
-#define IRC5V+0 0x10
-#define IRC5V+1 0x810
+#define IRC5VOLU0 0x10
+#define IRC5VOLU1 0x810
 
-#define IRC5V-0 0x11
-#define IRC5V-1 0x811
+#define IRC5VOLD0 0x11
+#define IRC5VOLD1 0x811
 
 #define IRC5AV0 0x38 
 #define IRC5AV1 0x838

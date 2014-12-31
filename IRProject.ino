@@ -172,7 +172,7 @@ void loop()
         Serial.println("sending on to digiturk");
         irsend.sendRC5(0xB8C,12); // sat on
       }else if(results.value == 0x802 || results.value == 0x2){
-        Serial.println("sending of to digiturk");
+        Serial.println("sending off to digiturk");
         irsend.sendRC5(0x38C,12);
       }else if(results.value == 0x80C || results.value == 0xC){ // all off
         Serial.println("sending off to digiturk");
@@ -295,37 +295,5 @@ void loop()
     // do nothing:
     while(true);
   }
-
-
-Codes:
--------------------------------------------
-Samsung TV: None : 32 bit
-on: E0E040BF
-Decoded SAMSUNG: 40BF (32 bits)
-
-Raw (68): -18514, 4450, -4450, 550, -1650, 550, -1650, 600, -1650, 550, -550, 550, -550, 550, -550, 550, -550, 550, -550, 600, -1600, 600, -1650, 550, -1650, 550, -550, 600, -500, 600, -500, 600, -550, 550, -550, 55
--------------------------------------------
-HK: NEC: 32 bit
-On: 10E03FC+FFFFFFFF
-Off: 10EF906+FFFFFFFF
-mute: 10E837C
-vol u: 10EE31C
-vol d: 10E13EC
-cable: 10E0DF2
-STB: 10ECB34
-TV: 10E8D72
-game: 10E4DB2
--------------------------------------------
-Digiturk: RC5: 12 bit
-on: B8C 38C
-ch up: 392 B92
-ch dw: BAE 3AE
-pprev: 390 B90
-vol u: BB1 3B1
-vol d: BB2 3B2
--------------------------------------------
-
-Apple TV
-Menu: 
 
 */
