@@ -1,114 +1,58 @@
-// IR Codes
+#ifndef ir_hex_input_h
+#define ir_hex_input_h
 
-// Input Remote Codes
+// IR Codes for my generic remote
 
-#define IPROTOCOL RC5
-#define IBITS 12 // !!
+// Protocol specific definitions
+#define IBITS 12
+#define IALTBIT 12
 
-#define IRC5POWER0 0xC
-#define IRC5POWER1 0X80C
+// Button codes
+#define IPOWER 0xC
+#define IN0 0x0
+#define IN1 0x1
+#define IN2 0x2
+#define IN3 0x3
+#define IN4 0x4
+#define IN5 0x5
+#define IN6 0x6
+#define IN7 0x7
+#define IN8 0x8
+#define IN9 0x9     
+#define IMUTE 0xD   
+#define ICHU 0x20
+#define ICHD  0x21
+#define IVOLU 0x10
+#define IVOLD 0x11
+#define IAV 0x38 
+#define ITV 0x3F
+#define ISMD 0x23  
+#define IRLR 0x22
+#define ITTX0 0x3C
+#define ITTX1 0x2E
+#define ITTX2 0x2A
+#define ITTX4 0x29
+#define ITTX5 0x2B
+#define ITTX6 0x2D
+#define ITTX7 0x82C
+#define IPP 0x80E
+#define Iinfo 0xF
 
-#define IRC5N00 0x0
-#define IRC5N01 0x800
-
-#define IRC5N10 0x1
-#define IRC5N11 0x801
-
-#define IRC5N20 0x2
-#define IRC5N21 0x802
-
-#define IRC5N30 0x3
-#define IRC5N31 0x803
-
-#define IRC5N40 0x4
-#define IRC5N41 0x804
-
-#define IRC5N50 0x5
-#define IRC5N51 0x805
-
-#define IRC5N60 0x6
-#define IRC5N61 0x806
-
-#define IRC5N70 0x7
-#define IRC5N71 0x807
-
-#define IRC5N80 0x8
-#define IRC5N81 0x808
-
-#define IRC5N90 0x9
-#define IRC5N91 0x809
-
-#define IRC5MUTE0 0xD
-#define IRC5MUTE1 0x80D
-
-#define IRC5CHU0 0x20
-#define IRC5CHU1 0x820
-
-#define IRC5CHD0  0x21
-#define IRC5CHD1  0x821
-
-#define IRC5VOLU0 0x10
-#define IRC5VOLU1 0x810
-
-#define IRC5VOLD0 0x11
-#define IRC5VOLD1 0x811
-
-#define IRC5AV0 0x38 
-#define IRC5AV1 0x838
-
-#define IRC5TV0 0x3F
-#define IRC5TV1 0x83F
-
-#define IRC5SMD0 0x23
-#define IRC5SMD1 0x823
-
-#define IRC5RLR0 0x22
-#define IRC5RLR1 0x822
-
-#define IXXXMENU0 0xBFB8F2FE
-#define IXXXMENU1 0xD9F9700B
-
-#define IRC5TTX00 0x3C
-#define IRC5TTX01 0x83C
-
-#define IRC5TTX10 0x2E
-#define IRC5TTX11 0x82E
-
-#define IRC5TTX20 0x2A
-#define IRC5TTX21 0x82A
-
+//000 0000 1011 1111 1011 1000 1111 0010 1111 1110
+#define IXXXMENU0 0xBFB8F2FE 
+//000 0000 1101 1001 1111 1001 0111 000 0000 1011
+#define IXXXMENU1 0xD9F9700B 
 #define IXXXTTX30 0xC460AC26
-#define IXXXTTX30 0xC460AC26 //!!
-
-#define IRC5TTX40 0x29
-#define IRC5TTX41 0x829
-
-#define IRC5TTX50 0x2B
-#define IRC5TTX51 0x82B
-
-#define IRC5TTX60 0x2D
-#define IRC5TTX61 0x82D
-
-#define IRC5TTX70 0x82C
-#define IRC5TTX71 0x82C // !!
-
-#define IRC5PP0 0x80E
-#define IRC5PP1 0x80E //!!
-
-#define IRC5i0 0x80F
-#define IRC5i1 0x80F // !!
-
+#define IXXXTTX31 0xC460AC26 //!!
 #define IXXX16_90 0xAD8C62D2
 #define IXXX16_91 0xF280BC5B
-
 #define IXXXRED0 0x1C102884
 #define IXXXRED1 0x4B995E59
+#define IXXXGREEN0 0xE050BDE6
+#define IXXXGREEN1 0xEF4EDF53
+#define IXXXYELLOW0 0xDF50BC53
+#define IXXXYELLOW1 0xF04EE0E6
+#define IXXXBLUE0 0x8533B77
+#define IXXXBLUE1 0x5F564B6A
 
-#define IXXXGREEN0 0x1C102884
-#define IXXXGREEN1 0x4B995E59
-
-#define IXXXYELLOW0 0x1C102884
-#define IXXXYELLOW1 0x4B995E59
-
-#define IXXXBLUE0 0x1C102884
-#define IXXXBLUE1 0x4B995E59
+#endif
