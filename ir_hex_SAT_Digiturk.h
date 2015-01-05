@@ -35,6 +35,7 @@ int altCode(int code){
 #define SATINFO   0x3AC
 #define SATVOLUP  0x3B1
 #define SATVOLD   0x3B2
+#define SATOK     0x391
 #define SATCHUP   0x392
 #define SATCHD    0x3AE
 #define SATPLUS   0x38A

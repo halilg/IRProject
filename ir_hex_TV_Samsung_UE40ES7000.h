@@ -39,7 +39,6 @@
 // 60: up
 // 61: down
 // 62: R
-// 61: down
 // 65: L	
 // 68: OK
 // 6C: A button red
@@ -58,8 +57,8 @@
 // ?
 // 9f: 3d
 
+/*
 #define TVKEY_MTS	0x68 //?
-
 #define TVKEY_SLEEP	0x61 //?
 #define TVKEY_1	0x65
 #define TVKEY_2	0x62
@@ -303,5 +302,5 @@
 #define TVKEY_EXT39	0x10B
 #define TVKEY_EXT40	0x10B
 #define TVKEY_EXT41	0x10B
-
+*/
 #endif

@@ -82,7 +82,7 @@
      // Stop bit
      Pulse();
      delayMicroseconds(4500);
-   
+     
      // Re-enable interrupts
      sei();
    }

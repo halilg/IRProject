@@ -19,9 +19,12 @@
 #define MODAUX 7
 
 // Delay between multiple transmissions, in ms
-#define TDELAY 50 
+#define TDELAY 30 
 
-int RECV_PIN = 4; // Pin of IR receiver
+// Option to compile serial print codes
+#define NOSERIAL
+
+int RECV_PIN = 4;//4; // Pin of IR receiver
 int led = 13;     // Pin of blinker LED
 byte oMode=MODOFF;
 byte Type=0, Crc;   // Samsung TV protocol variables
@@ -60,11 +63,12 @@ void evaluateIRCode(){
     if (results.decode_type == RC5){
         altbit=results.value & 0x800;
         cmd11bit=results.value & 0x3FF;
+        #ifndef NOSERIAL
         Serial.print("Altbit, altbitstripped code:");
         Serial.print(altbit);
         Serial.print(", 0x");          
         Serial.println(cmd11bit, HEX);
-
+        #endif
         switch(cmd11bit){
           case IPOWER:
               Serial.println("IPOWER: Turning off TV, SAT and AVR");
@@ -111,7 +115,7 @@ void evaluateIRCode(){
               Serial.println("IN4: -");
               switch(oMode){
                 case MODTV:
-                   irsend.SENDNP(TVKEY_LEFT);
+                   Samsung_SendCommand(TVKEY_LEFT);
                    break;
                 case MODATV:
                    irsend.SENDNP(NPL);
@@ -124,7 +128,7 @@ void evaluateIRCode(){
               Serial.println("IN5: -");
               switch(oMode){
                 case MODTV:
-                   irsend.SENDNP(TVKEY_ENTER);
+                   Samsung_SendCommand(TVKEY_ENTER);
                    break;                
                 case MODATV:
                    irsend.SENDNP(NPOK);
@@ -137,7 +141,7 @@ void evaluateIRCode(){
               Serial.println("IN6: -"); 
               switch(oMode){
                 case MODTV:
-                   irsend.SENDNP(TVKEY_RIGHT);
+                   Samsung_SendCommand(TVKEY_RIGHT);
                    break;                
                 case MODATV:
                    irsend.SENDNP(NPR);
@@ -150,8 +154,8 @@ void evaluateIRCode(){
               Serial.println("IN7: -");
               switch(oMode){
                 case MODTV:
-                   irsend.SENDNP(TVKEY_RETURN);
-                   break;                
+                   Samsung_SendCommand(TVKEY_RETURN);
+                   break;
                 case MODATV:
                    irsend.SENDNP(NPMENU);
                    break;
@@ -163,7 +167,7 @@ void evaluateIRCode(){
               Serial.println("IN8: -");
               switch(oMode){
                 case MODTV:
-                   irsend.SENDNP(TVKEY_DOWN);
+                   Samsung_SendCommand(TVKEY_DOWN);
                    break;                
                 case MODATV:
                    irsend.SENDNP(NPD);
@@ -176,7 +180,7 @@ void evaluateIRCode(){
               Serial.println("IN9: -");
               switch(oMode){
                 case MODTV:
-                   irsend.SENDNP(TVKEY_EXIT);
+                   Samsung_SendCommand(TVKEY_EXIT);
                    break;                
                 case MODATV:
                    irsend.SENDNP(NPPLAY);
@@ -194,7 +198,7 @@ void evaluateIRCode(){
               Serial.println(oMode);
               switch(oMode){
                 case MODTV:
-                   irsend.SENDNP(TVKEY_UP);
+                   Samsung_SendCommand(TVKEY_UP);
                    break;                
                 case MODATV:
                    irsend.SENDNP(NPUP);
@@ -208,7 +212,7 @@ void evaluateIRCode(){
               Serial.println(oMode);
               switch(oMode){
                 case MODTV:
-                   irsend.SENDNP(TVKEY_DOWN);
+                   Samsung_SendCommand(TVKEY_DOWN);
                    break;                
                 case MODATV:
                    irsend.SENDNP(NPD);
@@ -299,6 +303,8 @@ void evaluateIRCode(){
             if (oMode == MODSAT) sat_power(false);//irsend.SENDSAT(0x38C); // sat off
             delay(TDELAY);                                
             Samsung_SendCommand(TVKEY_HDMI);
+            delay(TDELAY);
+            irsend.SENDNP(NPMENU); // poke Apple TV            
             oMode=MODATV;
             
         } else if(results.value == IXXXYELLOW0 || results.value == IXXXYELLOW1){ // ttx yellow 
@@ -326,13 +332,13 @@ void evaluateIRCode(){
             Serial.println("IXXXMENU: Menu");  
             switch(oMode){
               case MODTV:
-                 irsend.SENDNP(TVKEY_MENU);
+                 Samsung_SendCommand(TVKEY_MENU);
                  break;                
               case MODATV:
                  irsend.SENDNP(NPOK);
                  break;
               case MODSAT:
-                 irsend.SENDSAT(SATMENU);
+                 irsend.SENDSAT(SATOK);
             }           
         }
     }
@@ -341,14 +347,17 @@ void evaluateIRCode(){
 
 void loop()
 {
+    //Serial.println("asd");
+    //delay(500);
     if (irrecv.decode(&results)) {
         digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+        #ifndef NOSERIAL
         if (results.decode_type == RC5) Serial.print("@@@ Protocol: RC5; Bits: ");
         else Serial.print("@@@ Protocol: Other; Bits: ");
         Serial.print(results.bits);
         Serial.print("; Code: 0x");
         Serial.println(results.value, HEX);
-        
+        #endif
         evaluateIRCode();  
         
         // prepare to receive the next command
